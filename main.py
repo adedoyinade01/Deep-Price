@@ -72,7 +72,7 @@ with st.form("prediction_form"):
     sqft_living15 = st.number_input("Sqft Living (15)", 500, 10000, 2000)
     sqft_lot15 = st.number_input("Sqft Lot (15)", 500, 20000, 5000)
 
-    submitted = st.form_submit_button("Predict")
+   # submitted = st.form_submit_button("Predict")
 
     if submitted:
         input_data = pd.DataFrame([[
