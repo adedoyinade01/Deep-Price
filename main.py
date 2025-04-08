@@ -18,7 +18,7 @@ def load_data():
 df = load_data()
 
 # Load model and scaler
-model = load_model('model/house_price_model.h5')
+model = load_model('model/house_price_model.keras')
 scaler = joblib.load('model/scaler.pkl')
 
 # 1. Dataset Preview
