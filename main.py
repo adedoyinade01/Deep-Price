@@ -10,7 +10,8 @@ from tensorflow.keras.models import load_model
 df = pd.read_csv('data/kc_house_data.csv')
 
 # Load model and scaler
-model = load_model('model/house_price_model.h5')
+# model = load_model('model/house_price_model.h5')
+model = load_model('model/house_price_model.keras')
 scaler = joblib.load('model/scaler.pkl')
 
 st.title("🏡 Seattle House Price Prediction")
