@@ -81,9 +81,9 @@ with st.form("prediction_form"):
             lat, long, sqft_living15, sqft_lot15  # 17 values only
         ]], columns=feature_columns)
 
-    input_scaled = scaler.transform(input_data)
-    predicted_price = model.predict(input_scaled)[0][0]
-    st.success(f"Predicted House Price: ${int(predicted_price):,}")
+        input_scaled = scaler.transform(input_data)
+        predicted_price = model.predict(input_scaled)[0][0]
+        st.success(f"Predicted House Price: ${int(predicted_price):,}")
 
 # 5. Optional: Model Evaluation (y_test vs predictions) — Placeholder
 # You can update this with your actual predictions if you saved y_test and predictions
