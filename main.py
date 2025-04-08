@@ -18,7 +18,7 @@ def load_data():
 df = load_data()
 
 # Load Model and Preprocessing Objects
-model = load_model("model/house_price_model.h5")
+model = load_model("model/house_price_model.keras")
 scaler = joblib.load("model/scaler.pkl")
 feature_columns = joblib.load("model/feature_columns.pkl")  # same columns used during training
 
