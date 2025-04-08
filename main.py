@@ -72,27 +72,18 @@ with st.form("prediction_form"):
     sqft_living15 = st.number_input("Sqft Living (15)", 500, 10000, 2000)
     sqft_lot15 = st.number_input("Sqft Lot (15)", 500, 20000, 5000)
 
-   # submitted = st.form_submit_button("Predict")
+    submitted = st.form_submit_button("Predict")
+    
+    if submitted:
+        input_data = pd.DataFrame([[
+            bedrooms, bathrooms, sqft_living, floors, waterfront, view, condition,
+            grade, sqft_above, sqft_basement, yr_built, yr_renovated, zipcode,
+            lat, long, sqft_living15, sqft_lot15  # 17 values only
+        ]], columns=feature_columns)
 
-    input_data = pd.DataFrame([[
-        bedrooms, bathrooms, sqft_living, floors, waterfront, view, condition,
-        grade, sqft_above, sqft_basement, yr_built, yr_renovated, zipcode,
-        lat, long, sqft_living15, sqft_lot15  # 17 values only
-    ]], columns=feature_columns)
-
-    input_scaled = scaler.transform(input_data)
-    predicted_price = model.predict(input_scaled)[0][0]
-    st.success(f"Predicted House Price: ${int(predicted_price):,}")
-    # if submitted:
-    #     input_data = pd.DataFrame([[
-    #         bedrooms, bathrooms, sqft_living, floors, waterfront, view, condition,
-    #         grade, sqft_above, sqft_basement, yr_built, yr_renovated, zipcode,
-    #         lat, long, sqft_living15, sqft_lot15  # 17 values only
-    #     ]], columns=feature_columns)
-
-    #     input_scaled = scaler.transform(input_data)
-    #     predicted_price = model.predict(input_scaled)[0][0]
-    #     st.success(f"Predicted House Price: ${int(predicted_price):,}")
+        input_scaled = scaler.transform(input_data)
+        predicted_price = model.predict(input_scaled)[0][0]
+        st.success(f"Predicted House Price: ${int(predicted_price):,}")
 
 # 5. Optional: Model Evaluation (y_test vs predictions) — Placeholder
 # You can update this with your actual predictions if you saved y_test and predictions
