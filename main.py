@@ -25,7 +25,9 @@ feature_columns = joblib.load("model/feature_columns.pkl")  # same columns used 
 # 1. Dataset Preview
 st.subheader("📊 Dataset Preview")
 if st.checkbox("Show raw data"):
-    st.dataframe(df.head(10))
+    # Remove less relevant columns for cleaner display
+    display_df = df.drop(columns=['lat', 'long', 'sqft_living15', 'sqft_lot15'])
+    st.dataframe(display_df.head(10))
 
 # 2. Visual Analysis
 st.subheader("📈 Data Visualization")
