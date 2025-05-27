@@ -77,16 +77,11 @@ with st.form("prediction_form"):
     submitted = st.form_submit_button("Predict")
     
     if submitted:
-        # Debug: Show feature columns info
-        st.write(f"Expected columns: {len(feature_columns)}")
-        st.write(f"Feature columns: {list(feature_columns)}")
-        
         input_values = [
             bedrooms, bathrooms, sqft_living, sqft_lot, floors, waterfront, view, condition,
             grade, sqft_above, sqft_basement, yr_built, yr_renovated,
             lat, long, sqft_living15, sqft_lot15, month, year
         ]
-        st.write(f"Provided values: {len(input_values)}")
         
         input_data = pd.DataFrame([input_values], columns=feature_columns)
 
