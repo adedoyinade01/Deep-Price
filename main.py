@@ -90,8 +90,8 @@ with st.form("prediction_form"):
         
         input_values = [
             bedrooms, bathrooms, sqft_living, sqft_lot, floors, waterfront, view, condition,
-            grade, sqft_above, sqft_basement, yr_renovated,
-            lat, long, sqft_living15, sqft_lot15, month, yr_built, year
+            grade, sqft_above, sqft_basement, yr_built, yr_renovated,
+            lat, long, sqft_living15, sqft_lot15, month, year
         ]
         
         input_data = pd.DataFrame([input_values], columns=feature_columns)
