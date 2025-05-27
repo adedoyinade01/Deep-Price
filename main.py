@@ -82,10 +82,10 @@ with st.form("prediction_form"):
     # Hidden fields with reasonable defaults (model still needs these)
     lat = float(df['lat'].mean())  # Default to Seattle area average
     long = float(df['long'].mean())  # Default to Seattle area average
-    sqft_living15 = sqft_living  # Default to same as main living space
-    sqft_lot15 = sqft_lot  # Default to same as main lot size
+    sqft_living15 = sqft_living/2  # Default to same as main living space
+    sqft_lot15 = sqft_lot/2  # Default to same as main lot size
     # year = st.number_input("Year Built", 2014, 2024, 2022)
-    yr_built = 2025
+    yr_built = datetime.now().year
     
     if submitted:
         
