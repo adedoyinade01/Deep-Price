@@ -74,7 +74,7 @@ with st.form("prediction_form"):
                    "July", "August", "September", "October", "November", "December"]
     selected_month = st.selectbox("Month Built", month_names, index=5)
     month = month_names.index(selected_month) + 1
-    year = st.number_input("Year Built", 1900, 2022, 1990)
+    year = st.number_input("Year Built", 1900, 2024, 2022)
 
     submitted = st.form_submit_button("Predict")\
         
