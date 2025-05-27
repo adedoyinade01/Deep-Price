@@ -67,10 +67,12 @@ with st.form("prediction_form"):
     sqft_basement = st.number_input("Sqft Basement", 0, 5000, 500)
     yr_built = st.number_input("Year Built", 1900, 2022, 1990)
     yr_renovated = st.number_input("Year Renovated", 0, 2022, 0)
-    lat = st.number_input("Latitude", value=float(df['lat'].mean()))
-    long = st.number_input("Longitude", value=float(df['long'].mean()))
-    sqft_living15 = st.number_input("Sqft Living (15)", 500, 10000, 2000)
-    sqft_lot15 = st.number_input("Sqft Lot (15)", 500, 20000, 5000)
+    
+    # Hidden fields with reasonable defaults (model still needs these)
+    lat = float(df['lat'].mean())  # Default to Seattle area average
+    long = float(df['long'].mean())  # Default to Seattle area average
+    sqft_living15 = sqft_living  # Default to same as main living space
+    sqft_lot15 = sqft_lot  # Default to same as main lot size
     month_names = ["January", "February", "March", "April", "May", "June", 
                    "July", "August", "September", "October", "November", "December"]
     selected_month = st.selectbox("Month", month_names, index=5)
