@@ -67,7 +67,6 @@ with st.form("prediction_form"):
     grade = st.slider("Grade", 1, 13, 7)
     sqft_above = st.number_input("Sqft Above", 500, 10000, 1500)
     sqft_basement = st.number_input("Sqft Basement", 0, 5000, 500)
-    yr_built = st.number_input("Year Built", 1900, 2022, 1990)
     yr_renovated = st.number_input("Year Renovated", 0, 2022, 0)
 
     month_names = ["January", "February", "March", "April", "May", "June", 
