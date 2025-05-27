@@ -55,6 +55,7 @@ st.subheader("🧠 Predict on a New House")
 
 with st.form("prediction_form"):
     sqft_living = st.number_input("Living Space (sqft)", min_value=500, max_value=10000, value=2000)
+    sqft_lot = st.number_input("Lot Size (sqft)", min_value=500, max_value=50000, value=5000)
     bedrooms = st.slider("Bedrooms", 1, 10, 3)
     bathrooms = st.slider("Bathrooms", 1, 5, 2)
     floors = st.slider("Floors", 1, 3, 1)
@@ -76,9 +77,9 @@ with st.form("prediction_form"):
     
     if submitted:
         input_data = pd.DataFrame([[
-            bedrooms, bathrooms, sqft_living, floors, waterfront, view, condition,
+            bedrooms, bathrooms, sqft_living, sqft_lot, floors, waterfront, view, condition,
             grade, sqft_above, sqft_basement, yr_built, yr_renovated, zipcode,
-            lat, long, sqft_living15, sqft_lot15  # 17 values only
+            lat, long, sqft_living15, sqft_lot15
         ]], columns=feature_columns)
 
         input_scaled = scaler.transform(input_data)
