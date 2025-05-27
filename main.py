@@ -85,7 +85,7 @@ with st.form("prediction_form"):
     sqft_living15 = sqft_living  # Default to same as main living space
     sqft_lot15 = sqft_lot  # Default to same as main lot size
     # year = st.number_input("Year Built", 2014, 2024, 2022)
-    yr_built = 2022
+    yr_built = 2000
     
     if submitted:
         
