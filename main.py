@@ -71,16 +71,20 @@ with st.form("prediction_form"):
     long = st.number_input("Longitude", value=float(df['long'].mean()))
     sqft_living15 = st.number_input("Sqft Living (15)", 500, 10000, 2000)
     sqft_lot15 = st.number_input("Sqft Lot (15)", 500, 20000, 5000)
-    month = st.slider("Month", 1, 12, 6)
+    month_names = ["January", "February", "March", "April", "May", "June", 
+                   "July", "August", "September", "October", "November", "December"]
+    selected_month = st.selectbox("Month", month_names, index=5)
+    month = month_names.index(selected_month) + 1
     year = st.number_input("Year", 2014, 2024, 2022)
 
     submitted = st.form_submit_button("Predict")
     
     if submitted:
+        
         input_values = [
             bedrooms, bathrooms, sqft_living, sqft_lot, floors, waterfront, view, condition,
-            grade, sqft_above, sqft_basement, yr_built, yr_renovated,
-            lat, long, sqft_living15, sqft_lot15, month, year
+            grade, sqft_above, sqft_basement, yr_built, yr_renovated, zipcode,
+            lat, long, sqft_living15, sqft_lot15
         ]
         
         input_data = pd.DataFrame([input_values], columns=feature_columns)
