@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import joblib
 from tensorflow.keras.models import load_model
+from datetime import datetime
 
 # App Config
 st.set_page_config(page_title="House Price Explorer", layout="wide")
@@ -75,7 +76,7 @@ with st.form("prediction_form"):
     month = month_names.index(selected_month) + 1
     yr_built = st.number_input("Year Built", 1990, 2024, 2022)
 
-    submitted = st.form_submit_button("Predict")\
+    submitted = st.form_submit_button("Predict")
         
        
     # Hidden fields with reasonable defaults (model still needs these)
@@ -83,13 +84,14 @@ with st.form("prediction_form"):
     long = float(df['long'].mean())  # Default to Seattle area average
     sqft_living15 = sqft_living  # Default to same as main living space
     sqft_lot15 = sqft_lot  # Default to same as main lot size
+    year = datetime.now().year
     
     if submitted:
         
         input_values = [
             bedrooms, bathrooms, sqft_living, sqft_lot, floors, waterfront, view, condition,
             grade, sqft_above, sqft_basement, yr_renovated,
-            lat, long, sqft_living15, sqft_lot15, month, yr_built
+            lat, long, sqft_living15, sqft_lot15, month, yr_built, year
         ]
         
         input_data = pd.DataFrame([input_values], columns=feature_columns)
