@@ -76,11 +76,18 @@ with st.form("prediction_form"):
     submitted = st.form_submit_button("Predict")
     
     if submitted:
-        input_data = pd.DataFrame([[
+        # Debug: Show feature columns info
+        st.write(f"Expected columns: {len(feature_columns)}")
+        st.write(f"Feature columns: {list(feature_columns)}")
+        
+        input_values = [
             bedrooms, bathrooms, sqft_living, sqft_lot, floors, waterfront, view, condition,
             grade, sqft_above, sqft_basement, yr_built, yr_renovated, zipcode,
             lat, long, sqft_living15, sqft_lot15
-        ]], columns=feature_columns)
+        ]
+        st.write(f"Provided values: {len(input_values)}")
+        
+        input_data = pd.DataFrame([input_values], columns=feature_columns)
 
         input_scaled = scaler.transform(input_data)
         predicted_price = model.predict(input_scaled)[0][0]
