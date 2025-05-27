@@ -73,7 +73,7 @@ with st.form("prediction_form"):
                    "July", "August", "September", "October", "November", "December"]
     selected_month = st.selectbox("Month Built", month_names, index=5)
     month = month_names.index(selected_month) + 1
-    year = st.number_input("Year Built", 1990, 2024, 2022)
+    yr_built = st.number_input("Year Built", 1990, 2024, 2022)
 
     submitted = st.form_submit_button("Predict")\
         
@@ -88,8 +88,8 @@ with st.form("prediction_form"):
         
         input_values = [
             bedrooms, bathrooms, sqft_living, sqft_lot, floors, waterfront, view, condition,
-            grade, sqft_above, sqft_basement, yr_built, yr_renovated,
-            lat, long, sqft_living15, sqft_lot15, month, year
+            grade, sqft_above, sqft_basement, yr_renovated,
+            lat, long, sqft_living15, sqft_lot15, month, yr_built
         ]
         
         input_data = pd.DataFrame([input_values], columns=feature_columns)
