@@ -53,7 +53,7 @@ sns.scatterplot(x='price', y='long', data=df, ax=ax3)
 st.pyplot(fig3)
 
 # 4. Predict New House Price
-st.subheader("🧠 Predict on a New House")
+st.subheader("🎯 Predict on a New House")
 
 with st.form("prediction_form"):
     sqft_living = st.number_input("Living Space (sqft)", min_value=500, max_value=10000, value=2000)
