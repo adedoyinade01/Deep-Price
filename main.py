@@ -67,11 +67,12 @@ with st.form("prediction_form"):
     sqft_basement = st.number_input("Sqft Basement", 0, 5000, 500)
     yr_built = st.number_input("Year Built", 1900, 2022, 1990)
     yr_renovated = st.number_input("Year Renovated", 0, 2022, 0)
-    zipcode = st.selectbox("Zipcode", sorted(df['zipcode'].unique()))
     lat = st.number_input("Latitude", value=float(df['lat'].mean()))
     long = st.number_input("Longitude", value=float(df['long'].mean()))
     sqft_living15 = st.number_input("Sqft Living (15)", 500, 10000, 2000)
     sqft_lot15 = st.number_input("Sqft Lot (15)", 500, 20000, 5000)
+    month = st.slider("Month", 1, 12, 6)
+    year = st.number_input("Year", 2014, 2024, 2022)
 
     submitted = st.form_submit_button("Predict")
     
@@ -82,16 +83,16 @@ with st.form("prediction_form"):
         
         input_values = [
             bedrooms, bathrooms, sqft_living, sqft_lot, floors, waterfront, view, condition,
-            grade, sqft_above, sqft_basement, yr_built, yr_renovated, zipcode,
-            lat, long, sqft_living15, sqft_lot15
+            grade, sqft_above, sqft_basement, yr_built, yr_renovated,
+            lat, long, sqft_living15, sqft_lot15, month, year
         ]
         st.write(f"Provided values: {len(input_values)}")
         
-        # input_data = pd.DataFrame([input_values], columns=feature_columns)
+        input_data = pd.DataFrame([input_values], columns=feature_columns)
 
-        # input_scaled = scaler.transform(input_data)
-        # predicted_price = model.predict(input_scaled)[0][0]
-        # st.success(f"Predicted House Price: ${int(predicted_price):,}")
+        input_scaled = scaler.transform(input_data)
+        predicted_price = model.predict(input_scaled)[0][0]
+        st.success(f"Predicted House Price: ${int(predicted_price):,}")
 
 # 5. Optional: Model Evaluation (y_test vs predictions) — Placeholder
 # You can update this with your actual predictions if you saved y_test and predictions
